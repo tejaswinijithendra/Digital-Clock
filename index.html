@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body{
+            border-radius: 50px;
+background: linear-gradient(145deg, #d8db50, #ffff5f);
+box-shadow:  27px 27px 54px #76772c,
+             -27px -27px 54px #ffff86;
+        }
+        #digitalclock{
+            color: rgb(165, 30, 75);
+            font-size: 60px;
+            font-family: orbitron;
+            letter-spacing: 7px;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50px;
+
+
+        }
+        #date{
+            color: rgb(22, 109, 5);
+            font-size: 60px;
+            font-family: orbitron;
+            letter-spacing: 7px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <div id="digitalclock"></div>
+    <div id="date"></div>
+
+    <script>
+        function showTime(){
+    let date = new Date();
+    let h = date.getHours();
+    let m = date.getMinutes();
+    let s = date.getSeconds();
+let session = "AM";
+if(h==0){
+    h = 12; 
+}
+if(h>12){
+    h=h-12;
+    session = "PM";
+}
+if(h<10){
+    h="0"+h;
+}
+if(m<10){
+    m="0"+m;
+}
+if(s<10){
+    s="0"+s;
+}
+
+    document.getElementById("digitalclock").innerHTML = h + ":" + m + ":" + s + "" +session;
+    setTimeout(showTime,1000);
+        }
+        showTime();
+function showDate(){
+        var dateObj = new Date();
+var month = dateObj.getUTCMonth() + 1; //months from 1-12
+var day = dateObj.getUTCDate();
+var year = dateObj.getUTCFullYear();
+if(day<10){
+    day="0"+day;
+}
+if(month<10){
+    month="0"+month;
+}
+
+document.getElementById("date").innerHTML = day + "/" + month + "/" + year;
+}
+showDate();
+    </script>
+</body>
+</html>
